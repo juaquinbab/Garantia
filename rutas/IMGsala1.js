@@ -5,7 +5,7 @@ require('dotenv').config();
 const url = process.env.url;
 const idnumero = '543668822173469'
 const path = require('path');
-const urlserver = "https://9d4qpf61-2020.use2.devtunnels.ms";
+const urlserver = "https://garantia-production.up.railway.app/";
 
 
 function IMGsala1(EtapasMSG, WHATSAPP_API_TOKEN) {

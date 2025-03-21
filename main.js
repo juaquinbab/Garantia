@@ -29,7 +29,7 @@ const moment = require('moment-timezone');
 
 const WHATSAPP_API_TOKEN = process.env.WHATSAPP_API_TOKEN;
 const PORT = process.env.PORT;
-const urlserver = "https://9d4qpf61-2020.use2.devtunnels.ms";
+const urlserver = "https://garantia-production.up.railway.app/";
 const apiKey = process.env.apiKey;
 const idnumero = '543668822173469'
 
@@ -3947,7 +3947,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndex.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -3960,7 +3960,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrl10 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrl10 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -4060,7 +4060,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS2.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -4073,7 +4073,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls2 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls2 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -4171,7 +4171,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS3.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -4184,7 +4184,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls3 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls3 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -4285,7 +4285,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS4.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -4298,7 +4298,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls4 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls4 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -4400,7 +4400,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS5.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -4413,7 +4413,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls5 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls5 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -4513,7 +4513,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS6.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -4526,7 +4526,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls6 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls6 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -4624,7 +4624,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS7.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -4637,7 +4637,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls7 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls7 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -4737,7 +4737,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS8.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -4750,7 +4750,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls8 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls8 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -4847,7 +4847,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS9.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -4860,7 +4860,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls9 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls9 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -4959,7 +4959,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS10.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -4972,7 +4972,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls10 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls10 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -5069,7 +5069,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS11.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`
+        body: `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -5082,7 +5082,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL de la última captura de pantalla
-        lastScreenshotUrls11 = `https://9d4qpf61-2020.use2.devtunnels.ms/screenshotssala1/${screenshot.originalname}`;
+        lastScreenshotUrls11 = `https://garantia-production.up.railway.app//screenshotssala1/${screenshot.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -5182,7 +5182,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndex.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -5195,7 +5195,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf1 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf1 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -5294,7 +5294,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS2.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -5307,7 +5307,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf2 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf2 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -5403,7 +5403,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS3.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -5416,7 +5416,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf3 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf3 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -5512,7 +5512,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS4.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -5525,7 +5525,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf4 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf4 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -5619,7 +5619,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS5.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -5632,7 +5632,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf5 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf5 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -5729,7 +5729,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS6.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -5742,7 +5742,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf6 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf6 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -5838,7 +5838,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS7.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -5851,7 +5851,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf7 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf7 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -5946,7 +5946,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS8.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -5959,7 +5959,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf8 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf8 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -6054,7 +6054,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS9.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -6067,7 +6067,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf9 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf9 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -6164,7 +6164,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS10.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -6177,7 +6177,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf10 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf10 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)
@@ -6274,7 +6274,7 @@ app.post("/webhook", function (request, response) {
       MensajeIndexS11.push({
         from: lastMessage.from,
         name: lastMessage.name,
-        body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`
+        body: `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`
       });
 
       // Guardar la información en un archivo JSON en la carpeta historial con el nombre de from
@@ -6287,7 +6287,7 @@ app.post("/webhook", function (request, response) {
         }
 
         // Actualizar la URL del último PDF
-        lastScreenshotUrlpdf11 = `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${pdf.originalname}`;
+        lastScreenshotUrlpdf11 = `https://garantia-production.up.railway.app//pdf/${pdf.originalname}`;
 
         function obtenerFromDeMensajes(mensajes) {
           // Tomar el 'from' del primer objeto del array (si existe)

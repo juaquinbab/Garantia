@@ -43,7 +43,7 @@ function venta(EtapasMSG, WHATSAPP_API_TOKEN) {
                             const newEntry = {
                                 from: from,
                                 name: name,
-                                body: `https://9d4qpf61-2020.use2.devtunnels.ms/pdf/${body}`
+                                body: `https://garantia-production.up.railway.app//pdf/${body}`
                             };
 
                             // Agregar al array de mensajes
