@@ -7567,7 +7567,8 @@ app.post("/webhook", function (request, response) {
 
 
   // Iterar a través de EtapasMSG
-  let idToUpdateAU = null;
+  let idToUpdatepdf = null;
+
 
   if (EtapasMSG.length > 0) {
     let elementoModificadoRecientemente33 = null;
@@ -7598,7 +7599,7 @@ app.post("/webhook", function (request, response) {
           if (fs.existsSync(filePath)) {
             fileFound = true;
 
-            idToUpdateAU = id;
+            idToUpdatepdf = id;
 
             const payload = {
               messaging_product: 'whatsapp',
@@ -7619,12 +7620,12 @@ app.post("/webhook", function (request, response) {
                 },
               })
               .then((response) => {
-                if (idToUpdateAU !== null) {
-                  const indexToUpdate = EtapasMSG.findIndex((item) => item.id === idToUpdateAU);
+                if (idToUpdatepdf !== null) {
+                  const indexToUpdate = EtapasMSG.findIndex((item) => item.id === idToUpdatepdf);
                   if (indexToUpdate !== -1) {
                     EtapasMSG[indexToUpdate].etapa = etapa;
                     EtapasMSG[indexToUpdate].idp = 0;
-                    idToUpdateAU = null; // Restablecer el ID a null después de la actualización
+                    idToUpdatepdf = null; // Restablecer el ID a null después de la actualización
                   }
                 }
               })
@@ -7726,6 +7727,337 @@ app.post("/webhook", function (request, response) {
 
 
 
+
+  // ////////////////////////////////////////////////////
+  //////////ENVIA IMAGENES A PARTICULARES ////
+  ////////////////////////////////////
+
+  // Iterar a través de EtapasMSG
+  let idToUpdateAU = null;
+
+if (EtapasMSG.length > 0) {
+  let elementoModificadoRecientemente33 = null;
+
+  EtapasMSG.forEach((elemento) => {
+    if (
+      elemento.Idp !== 0 &&
+      (elementoModificadoRecientemente33 === null ||
+        elemento.timestamp > elementoModificadoRecientemente33.timestamp)
+    ) {
+      elementoModificadoRecientemente33 = elemento;
+    }
+  });
+
+  if (elementoModificadoRecientemente33 !== null) {
+    const { from, body, etapa, id, imgID, audioID } = elementoModificadoRecientemente33;
+
+    if (etapa >= 0 && etapa <= 300 && audioID) {
+      const folders = ['./sala1', './sala2', './sala3'];
+      let fileFound = false;
+
+      folders.forEach(folderPath => {
+        if (fileFound) return; // Si ya se encontró el archivo, salir del bucle
+
+        const fileName = `${from}.json`;
+        const filePath = path.join(folderPath, fileName);
+
+        if (fs.existsSync(filePath)) {
+          fileFound = true;
+
+          idToUpdateAU = id;
+
+          const payload = {
+            messaging_product: 'whatsapp',
+            recipient_type: 'individual',
+            to: from,
+            type: 'text',
+            text: {
+              preview_url: false,
+              body: `Audio Recibido.`,
+            },
+          };
+
+          axios
+            .post(`https://graph.facebook.com/v16.0/${idnumero}/messages`, payload, {
+              headers: {
+                Authorization: `Bearer ${WHATSAPP_API_TOKEN}`,
+                'Content-Type': 'application/json',
+              },
+            })
+            .then((response) => {
+              if (idToUpdateAU !== null) {
+                const indexToUpdate = EtapasMSG.findIndex((item) => item.id === idToUpdateAU);
+                if (indexToUpdate !== -1) {
+                  EtapasMSG[indexToUpdate].etapa = 4;
+                  EtapasMSG[indexToUpdate].idp = 0;
+                  idToUpdateAU = null; // Restablecer el ID a null después de la actualización
+                }
+              }
+            })
+            .catch((error) => {
+              console.error('Error al enviar la respuesta:', error.response.data);
+            });
+
+          const url = 'https://graph.facebook.com/v17.0/' + audioID;
+
+          const config = {
+            headers: {
+              Authorization: `Bearer ${WHATSAPP_API_TOKEN}`,
+            },
+          };
+
+          axios.get(url, config)
+            .then(response => {
+              const urlFromResponse = response.data.url;
+
+              const configp = {
+                headers: {
+                  Authorization: `Bearer ${WHATSAPP_API_TOKEN}`,
+                },
+                responseType: 'stream',
+              };
+
+              axios.get(urlFromResponse, configp)
+  .then(audioResponse => {
+    const randomThreeDigitNumber = Math.floor(1 + Math.random() * 9000);
+    const modifiedFileName = `${from}-${randomThreeDigitNumber}.ogg`;
+    const audioDir = path.join(process.cwd(), 'Public/Audio');
+    
+    // Verificar si la carpeta 'Audio' existe, si no, crearla
+    if (!fs.existsSync(audioDir)) {
+      fs.mkdirSync(audioDir, { recursive: true });
+    }
+
+    const audioPath = path.join(audioDir, modifiedFileName);
+    const writer = fs.createWriteStream(audioPath);
+
+    audioResponse.data.pipe(writer);
+
+    writer.on('finish', () => {
+      const audioURL = `${urlserver}/Audio/${modifiedFileName}`;
+   
+
+                    const newData = {
+                      "from": from,
+                      "body": audioURL,
+                      "name": name,
+                      "imgID": "",
+                      "etapa": 32,
+                      "id": "",
+                      "timestamp": Date.now(),
+                      "IDNAN": 4,
+                      "Cambio": 1,
+                      "Idp": 1,
+                      "idp": 0
+                    };
+
+                    try {
+                      const fileContent = fs.readFileSync(filePath, 'utf8');
+                      const existingData = JSON.parse(fileContent);
+                      existingData.push(newData);
+                      fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
+                    } catch (error) {
+                      console.error('Error al procesar el archivo JSON:', error);
+                    }
+                  });
+
+                  writer.on('error', (err) => {
+                    console.error('Error al guardar el audio:', err);
+                  });
+                })
+                .catch(error => {
+                  console.error('Error al realizar la solicitud GET para el audio:', error);
+                });
+            })
+            .catch(error => {
+              console.error('Error al realizar la solicitud a la API de Facebook:', error);
+            });
+        }
+      });
+
+      if (!fileFound) {
+        console.error('El archivo no existe en ninguna de las carpetas.');
+      }
+    } else {
+      console.log("La condición para 'body' y 'etapa' no coincide.");
+    }
+  } else {
+    console.log('No se encontró ningún elemento válido con idp distinto de 0');
+  }
+} else {
+  console.log("El array EtapasMSG está vacío.");
+}
+  // /////////////////////
+  /////////////////
+  ///////////////////////////////////
+
+
+  
+
+
+  // ////////////////////////////////////////////////////
+  //////////ESTE CODIGO CARGA LAS IMAGENES AL HISTORIAL ////
+  ////////////////////////////////////
+
+  // Iterar a través de EtapasMSG
+  let idToUpdate33 = null;
+
+if (EtapasMSG.length > 0) {
+  let elementoModificadoRecientemente33 = null;
+
+  EtapasMSG.forEach((elemento) => {
+    if (
+      elemento.Idp !== 0 &&
+      (elementoModificadoRecientemente33 === null ||
+        elemento.timestamp > elementoModificadoRecientemente33.timestamp)
+    ) {
+      elementoModificadoRecientemente33 = elemento;
+    }
+  });
+
+  if (elementoModificadoRecientemente33 !== null) {
+    const { from, body, etapa, id, imgID } = elementoModificadoRecientemente33;
+
+    if (etapa >= 0 && etapa <= 10 && imgID) {
+      const folders = ['./sala1', './sala2', './sala3'];
+      let fileFound = false;
+
+      folders.forEach(folderPath => {
+        if (fileFound) return; // Si ya se encontró el archivo, salir del bucle
+
+        const fileName = `${from}.json`;
+        const filePath = path.join(folderPath, fileName);
+
+        if (fs.existsSync(filePath)) {
+          fileFound = true;
+
+          idToUpdate33 = id;
+
+          const payload = {
+            messaging_product: 'whatsapp',
+            recipient_type: 'individual',
+            to: from,
+            type: 'text',
+            text: {
+              preview_url: false,
+              body: `Imagen Recibida.`,
+            },
+          };
+
+          axios
+            .post(`https://graph.facebook.com/v16.0/${idnumero}/messages`, payload, {
+              headers: {
+                Authorization: `Bearer ${WHATSAPP_API_TOKEN}`,
+                'Content-Type': 'application/json',
+              },
+            })
+            .then((response) => {
+              if (idToUpdate33 !== null) {
+                const indexToUpdate = EtapasMSG.findIndex((item) => item.id === idToUpdate33);
+                if (indexToUpdate !== -1) {
+                  EtapasMSG[indexToUpdate].etapa = 2;
+                  EtapasMSG[indexToUpdate].idp = 0;
+                  idToUpdate33 = null; // Restablecer el ID a null después de la actualización
+                }
+              }
+            })
+            .catch((error) => {
+              console.error('Error al enviar la respuesta:', error.response.data);
+            });
+
+          const url = 'https://graph.facebook.com/v17.0/' + imgID;
+
+          const config = {
+            headers: {
+              Authorization: `Bearer ${WHATSAPP_API_TOKEN}`,
+            },
+          };
+
+          axios.get(url, config)
+            .then(response => {
+              const urlFromResponse = response.data.url;
+
+              const configp = {
+                headers: {
+                  Authorization: `Bearer ${WHATSAPP_API_TOKEN}`,
+                },
+                responseType: 'stream',
+              };
+
+              axios.get(urlFromResponse, configp)
+  .then(imageResponse => {
+    const randomThreeDigitNumber = Math.floor(1 + Math.random() * 90000);
+    const modifiedFileName = `${from}-${randomThreeDigitNumber}.jpg`;
+    const imageDir = path.join(process.cwd(), 'Public/historico');
+    
+    // Verificar si la carpeta existe, si no, crearla
+    if (!fs.existsSync(imageDir)) {
+      fs.mkdirSync(imageDir, { recursive: true });
+    }
+
+    const imagePath = path.join(imageDir, modifiedFileName);
+    const writer = fs.createWriteStream(imagePath);
+
+    imageResponse.data.pipe(writer);
+
+    writer.on('finish', () => {
+      const imageURL = `${urlserver}/historico/${modifiedFileName}`;
+      // Aquí puedes hacer algo con la URL de la imagen
+
+                    const newData = {
+                      "from": from,
+                      "body": imageURL,
+                      "name": name,
+                      "imgID": "",
+                      "etapa": 32,
+                      "id": "",
+                      "timestamp": Date.now(),
+                      "IDNAN": 4,
+                      "Cambio": 1,
+                      "Idp": 1,
+                      "idp": 0
+                    };
+
+                    try {
+                      const fileContent = fs.readFileSync(filePath, 'utf8');
+                      const existingData = JSON.parse(fileContent);
+                      existingData.push(newData);
+                      fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
+                    } catch (error) {
+                      console.error('Error al procesar el archivo JSON:', error);
+                    }
+                  });
+
+                  writer.on('error', (err) => {
+                    console.error('Error al guardar la imagen:', err);
+                  });
+                })
+                .catch(error => {
+                  console.error('Error al realizar la solicitud GET para la imagen:', error);
+                });
+            })
+            .catch(error => {
+              console.error('Error al realizar la solicitud a la API de Facebook:', error);
+            });
+        }
+      });
+
+      if (!fileFound) {
+        console.error('El archivo no existe en ninguna de las carpetas.');
+      }
+    } else {
+      console.log("La condición para 'body' y 'etapa' no coincide.");
+    }
+  } else {
+    console.log('No se encontró ningún elemento válido con idp distinto de 0');
+  }
+} else {
+  console.log("El array EtapasMSG está vacío.");
+}
+
+  // /////////////////////
+  /////////////////
+  ///////////////////////////////////
 
 
 
