@@ -73,7 +73,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 
@@ -7821,7 +7821,7 @@ if (EtapasMSG.length > 0) {
   .then(audioResponse => {
     const randomThreeDigitNumber = Math.floor(1 + Math.random() * 9000);
     const modifiedFileName = `${from}-${randomThreeDigitNumber}.ogg`;
-    const audioDir = path.join(process.cwd(), 'Public/Audio');
+    const audioDir = path.join(process.cwd(), 'public/Audio');
     
     // Verificar si la carpeta 'Audio' existe, si no, crearla
     if (!fs.existsSync(audioDir)) {
@@ -7988,7 +7988,7 @@ if (EtapasMSG.length > 0) {
   .then(imageResponse => {
     const randomThreeDigitNumber = Math.floor(1 + Math.random() * 90000);
     const modifiedFileName = `${from}-${randomThreeDigitNumber}.jpg`;
-    const imageDir = path.join(process.cwd(), 'Public/historico');
+    const imageDir = path.join(process.cwd(), 'public/historico');
     
     // Verificar si la carpeta existe, si no, crearla
     if (!fs.existsSync(imageDir)) {
