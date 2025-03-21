@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Página Protegida</title>
+  <style>
+    /* Estilos del cuerpo y del fondo */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      background: #f0f0f0;
+      /* Color de fondo */
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url('/mig.jpg') center/cover no-repeat;
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+
+
+    /* Estilos de los botones */
+    .botones {
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: absolute;
+      top: 50px;
+      left: 80px;
+      border-radius: 15px;
+
+
+     
+
+      /* Bordes redondeados */
+      background-color: green;
+      /* Color de fondo verde */
+      color: white;
+      /* Letra blanca */
+      border: none;
+      /* Quitar borde por defecto */
+      padding: 10px 20px;
+      /* Espaciado interno */
+      font-size: 16px;
+      /* Tamaño de la letra */
+      cursor: pointer;
+      /* Cambiar el cursor al pasar por el botón */
+    }
+
+
+
+
+
+    .boton {
+      padding: 10px 20px;
+      border-radius: 20px;
+      background-color: #00bd16;
+      /* Color azul claro */
+      color: #fff;
+      margin-bottom: 50px;
+      /* Aumenta el espacio entre botones */
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .boton:hover {
+      transform: scale(1.1);
+    }
+
+
+    /* Estilos del pie de página */
+    footer {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+
+
+
+    .salas-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      /* Hasta 4 columnas por fila */
+      gap: 20px;
+      justify-items: start;
+      /* Alineación a la izquierda */
+    }
+
+    .sala {
+      border: 2px solid green;
+      /* Borde verde */
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .sala .header {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+
+    #chart-container {
+      position: absolute;
+      top: 40px;
+      right: 80px;
+      width: 50%;
+      max-width: 400px;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco traslúcido */
+      /* Fondo blanco */
+      border: 2px solid #ffffff;
+      /* Borde blanco */
+      border-radius: 10px;
+      /* Esquinas redondeadas */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* Sombra opcional para mejor visibilidad */
+    }
+  </style>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfica de Usuarios</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  </head>
+
+<body>
+
+  <div id="chart-container">
+    <canvas id="myChart"></canvas>
+  </div>
+
+
+
+  <button class="botones" id="moveButton">Administrar</button>
+
+
+  <div class="salas-container" id="salas-container"></div>
+
+
+
+    <script src="script.js"></script>
+
+
+    <footer>WhatsApp API Cloud distribuido por Creativo Code</footer>
+
+
+    <script>
+      document.getElementById('moveButton').addEventListener('click', () => {
+        const password = prompt("Por favor, ingresa la contraseña:");
+
+        // Aquí defines la contraseña correcta
+        const correctPassword = "2050";
+
+        if (password === correctPassword) {
+          fetch('/move-json-files')
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(error => console.error('Error:', error));
+        } else {
+          alert("Contraseña incorrecta.");
+        }
+      });
+    </script>
+
+
+<script>
+  async function fetchData() {
+    try {
+      const response = await fetch('/data');
+      const data = await response.json();
+      // console.log('Received data:', data);
+      const container = document.getElementById('salas-container');
+      container.innerHTML = '';
+
+      // Define los tiempos RTA manualmente para cada sala
+      const tiemposRTA = {
+        'sala1': +30,
+        'sala2': +30,
+        'sala3': +30,
+        'sala4': +30,
+        'sala5': +30,
+        'sala6': +30,
+        'sala7': +30,
+      
+      };
+
+      data.forEach(item => {
+        const tiempoRTA = tiemposRTA[item.sala] || 'N/A'; // Obtén el tiempo RTA para la sala, o 'N/A' si no está definido
+        const salaDiv = document.createElement('div');
+        salaDiv.classList.add('sala');
+        salaDiv.innerHTML = `
+          <div class="header">${item.sala}</div>
+          <div>Total de Usuarios: ${item.totalFiles}</div>
+          <div>Usuarios Sin Responder: ${item.filesWithoutResponse}</div>
+          <div>Tiempo RTA: ${tiempoRTA} minutos</div>
+        `;
+        container.appendChild(salaDiv);
+      });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  // Fetch data initially and then every 10 minutes
+  fetchData();
+  setInterval(fetchData, 10 * 60 * 1000);
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

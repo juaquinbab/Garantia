@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        
+        .sidebar {
+    width: 200px;
+    height: calc(96% - 78px);
+    position: fixed;
+    top: 78px;
+    left: 0;
+    background-color: #f4f4f4;
+    overflow-y: scroll; /* Scroll siempre visible */
+    padding: 20px;
+    z-index: 98;
+}
+
+        /* Estilos para los elementos de la lista de usuarios */
+        .sidebar h2 {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            /* Quitar viñetas de la lista */
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            padding: 5px;
+            cursor: pointer;
+            /* Cambiar cursor al pasar sobre los usuarios */
+        }
+
+        .sidebar li:hover {
+            background-color: #ddd;
+            /* Cambiar color de fondo al pasar sobre los usuarios */
+        }
+
+        /* Estilos para el área principal */
+        #main {
+            margin-left: 200px;
+            /* Dejar espacio a la izquierda para la columna de usuarios */
+            padding: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffffff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+
+
+
+        h1,
+        h2 {
+            color: #2979ff;
+        }
+
+        #response {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+
+        #resetButton {
+            background-color: rgb(255, 255, 255);
+            /* Cambiar el color a rojo */
+            color: #2cda00;
+            align-self: flex-end;
+            /* Cambiar a flex-end para alinear a la derecha */
+            margin-top: 20px;
+        }
+
+
+
+
+
+        #saveButtonpdf {
+            background-color: rgb(255, 255, 255);
+            /* Cambiar el color a rojo */
+            color: #2cda00;
+            align-self: flex-end;
+            /* Cambiar a flex-end para alinear a la derecha */
+            margin-top: 20px;
+        }
+
+
+        #uploadButtonpdf {
+            background-color: rgb(255, 255, 255);
+            /* Cambiar el color a rojo */
+            color: #2cda00;
+            align-self: flex-end;
+            /* Cambiar a flex-end para alinear a la derecha */
+            margin-top: 20px;
+        }
+
+
+
+
+        .floating-window {
+            position: absolute;
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .window-header {
+            background-color: #00c94d;
+            color: #fff;
+            padding: 10px;
+            cursor: move;
+        }
+
+
+
+        #contestarButton {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+
+
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            /* Agrega otros estilos para el contenido del body si es necesario */
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            /* Ajustar el padding horizontal para evitar solapamientos */
+            background-color: #00c94d;
+            /* Color con opacidad del 50% */
+            width: 100%;
+            /* Hacer que la cabecera ocupe todo el ancho */
+            position: fixed;
+            /* Fijar la cabecera en la parte superior */
+            top: 0;
+            /* Colocarla en la parte superior */
+            z-index: 99;
+            /* Asegurarse de que esté sobre otros elementos */
+        }
+
+
+        #header img {
+            height: 60px;
+            /* Tamaño del logo */
+        }
+
+        /* Ajustar el espacio debajo de la cabecera */
+        body {
+            margin-top: 60px;
+            /* Asegurar que el contenido comience debajo de la cabecera */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        .whatsapp-box.cambio-1 {
+            font-weight: bold;
+        }
+
+        #chat-box {
+            width: 100%;
+            min-height: 300px;
+            /* Altura mínima inicial */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            bottom: 80px;
+            left: 230px;
+            right: 0;
+            margin: auto;
+        }
+
+        /* Estilos para los mensajes */
+        #messages1 {
+            width: 80%;
+            min-height: 700px;
+            /* Altura mínima inicial para los mensajes */
+            max-height: 700px;
+            overflow-y: auto;
+            direction: ltr;
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            margin-left: 20px;
+        }
+
+        #messages1 div {
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 16px;
+            word-wrap: break-word;
+        }
+
+
+
+
+
+        /* Estilos para el área de respuesta */
+        #response-area {
+            display: flex;
+            align-items: center;
+            width: 86%;
+            position: fixed;
+            /* Fijar el área de respuesta */
+            bottom: 0;
+            /* Posicionar en la parte inferior */
+            left: 120;
+            /* Alinear a la izquierda */
+            right: 0;
+            /* Alinear a la derecha */
+            margin: auto;
+            /* Centrar horizontalmente */
+            z-index: 1;
+            /* Colocar el área de respuesta encima del chat-box */
+        }
+
+        /* Estilos para el textarea de respuesta */
+        #response {
+            width: calc(100% - 90px);
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        /* Estilos para los botones de respuesta */
+        #response-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Estilos específicos para los botones */
+        #enviarRespuesta1 {
+            background-color: #02d630;
+            color: #fff;
+        }
+
+        #contestarButton {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        /* Estilos para los elementos dentro de la cabecera */
+        .cabecera-elementos {
+            display: flex;
+            /* Mostrar los elementos en línea */
+            gap: 10px;
+            /* Espacio entre los elementos */
+            color: #fff;
+            /* Cambiar color del texto para visualización */
+            justify-content: flex-start;
+            /* Alinear elementos a la izquierda */
+        }
+
+
+        #colaespera1,
+        #resultado,
+        #BuscarOrden {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            /* Cambia el color de fondo según tu preferencia */
+            color: #01be3a;
+            margin-bottom: 10px;
+            /* Espacio entre divs */
+        }
+
+        .whatsapp-box.cambio-1 {
+            background-color: #24baff;
+            /* Verde claro al estilo de WhatsApp */
+            padding: 5px 10px;
+            /* Espaciado interno */
+            margin-bottom: 1px;
+            /* Espaciado inferior */
+            cursor: pointer;
+            /* Cambiar cursor al pasar por encima */
+            border-radius: 5px;
+
+        }
+
+        /* Estilo para archivos con Cambio = 0 (mismo estilo que antes) */
+        .whatsapp-box.cambio-0 {
+            background-color: #df0909;
+            /* Verde claro al estilo de WhatsApp */
+            padding: 5px 10px;
+            margin-bottom: 1px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .whatsapp-box {
+            background-color: #1ff714;
+            /* Verde claro al estilo de WhatsApp */
+            padding: 5px 10px;
+            /* Espaciado interno */
+            margin-bottom: 1px;
+            /* Espaciado inferior */
+            cursor: pointer;
+            /* Cambiar cursor al pasar por encima */
+            border-radius: 5px;
+            /* Bordes redondeados */
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('mig.jpg') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+
+        #screenshotImage {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 5px solid #01be3a;
+            /* Agregar un borde de 2px sólido de color verde */
+            padding: 8px;
+            /* Añadir un relleno alrededor de la imagen */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            /* Agregar una sombra alrededor de la imagen */
+            width: 300px;
+            /* Especifica el ancho deseado */
+            height: 200px;
+            /* Especifica el alto deseado */
+            object-fit: cover;
+            /* Ajusta la imagen para que cubra el área, recortando si es necesario */
+        }
+
+
+        #saveButton {
+            display: none;
+            position: fixed;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            /* Cambiar el color del texto a blanco */
+            background-color: #01be3a;
+            /* Cambiar el color de fondo a rojo */
+            font-size: 24px;
+            /* Ajustar el tamaño de la fuente a 24px */
+            padding: 10px 20px;
+            /* Añadir relleno al botón */
+            border: none;
+            /* Eliminar el borde */
+            border-radius: 13px;
+            /* Agregar esquinas redondeadas */
+        }
+
+        .selected {
+  background-color: lightblue; /* Cambia esto al estilo que prefieras */
+  border: 2px solid blue; /* Ejemplo de un borde */
+}
+
+    </style>
+</head>
+
+
+<!-- Cabecera -->
+<div id="header">
+    <div>
+        <img src="logo.png" alt="Logo"> <!-- Colocar el logo aquí -->
+    </div>
+    <div class="cabecera-elementos">
+        <div id="resultado">Resultado</div>
+        <div id="BuscarOrden">Buscar Orden</div>
+
+    </div>
+    <div>
+        <button id="resetButton">Reiniciar Usuario</button>
+        <input type="file" id="pdfInput" accept="application/pdf" style="display: none;">
+        <button id="uploadButtonpdf">Cargar PDF</button>
+        <button id="saveButtonpdf" style="display: none;">Enviar PDF</button>
+
+    </div>
+
+</div>
+
+
+<div class="sidebar">
+    <h2>Usuarios</h2>
+    <div id="historial"></div>
+</div>
+
+
+<!-- Contenedor principal -->
+<div id="chat-box">
+
+    <div id="messages1">
+        <!-- Aquí se mostrarán los mensajes recibidos -->
+        Mensajes anteriores...
+    </div>
+</div>
+
+
+
+<!-- Área de respuesta -->
+<div id="response-area">
+
+
+    <img id="screenshotImage" src="" alt="Captura de pantalla" style="display: none;">
+    <button id="saveButton" style="display: none;">Enviar Captura</button>
+
+
+    <textarea id="response" rows="4" placeholder="Escribe tu mensaje..." spellcheck="true"></textarea>
+    <div id="response-buttons">
+        <button id="enviarRespuesta1">Enviar</button>
+        <!-- <button id="contestarButton">Enviar</button> -->
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+    document.getElementById('btnActualizar').addEventListener('click', () => {
+        fetch('/actualizararray6', {
+            method: 'POST'
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // Muestra la respuesta del servidor en la consola
+                // Puedes hacer algo más con la respuesta del servidor aquí
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
+
+
+<script>
+
+
+    // /////////////////////////////////////////////////////////////////////
+    //////////////// MUESTRA EL HISTORIAL
+    ////////////////////////////////////////////
+
+
+    const historialDiv = document.getElementById('historial');
+const filterButton = document.createElement('button');
+filterButton.textContent = 'Filtrar Leidos';
+
+historialDiv.appendChild(filterButton);
+
+let selectedDiv = null;
+let MensajeIndexS6 = [];
+let loadedFiles = {};  // Objeto para realizar un seguimiento de los archivos cargados y sus últimas dos palabras
+let currentFileName = null;  // Nombre del archivo actualmente seleccionado
+let checkInterval = null;  // Intervalo para verificar cambios en el archivo seleccionado
+let filterActive = false;  // Estado del filtro
+
+// Función para actualizar los archivos JSON existentes
+async function actualizarHistorial() {
+  const response = await fetch('/sala6');
+  const files = await response.json();
+
+  // Crear un array para almacenar los nuevos divs y añadirlos al DOM después de aplicar el filtro
+  const newDivs = [];
+
+  for (const fileName of files) {
+    const fileContentResponse = await fetch(`/sala6/${fileName}`);
+    const fileContent = await fileContentResponse.json();
+    const lastBody = fileContent[fileContent.length - 1].body;
+    let lastTwoWords;
+    const bodyWords = lastBody.split(' ');
+
+    if (/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/.test(bodyWords[bodyWords.length - 1])) {
+      lastTwoWords = 'imagen';
+    } else {
+      lastTwoWords = bodyWords.slice(-2).join(' ');
+    }
+
+    const fileNameWithoutExtension = fileName.replace('.json', '');
+    if (!loadedFiles[fileName]) {
+      // Añade un nuevo div
+      const link = document.createElement('div');
+      link.classList.add('whatsapp-box');
+
+      const circleSpan = document.createElement('span');
+      circleSpan.textContent = '●';
+      circleSpan.style.color = fileContent[fileContent.length - 1].Cambio === 1 ? 'red' : 'black';
+      link.appendChild(circleSpan);
+      link.innerHTML += `${fileNameWithoutExtension}: <br>${lastTwoWords}`;
+      link.addEventListener('click', createClickHandler(fileNameWithoutExtension, link));
+
+      // Añadir a la lista de nuevos divs
+      newDivs.push(link);
+
+      loadedFiles[fileName] = {
+        element: link,
+        lastTwoWords: lastTwoWords,
+        circleSpan: circleSpan,
+        cambioValue: fileContent[fileContent.length - 1].Cambio  // Guardar el valor de Cambio
+      };
+    } else {
+      // Actualiza el contenido del div existente
+      const fileData = loadedFiles[fileName];
+      if (fileData.lastTwoWords !== lastTwoWords || fileData.cambioValue !== fileContent[fileContent.length - 1].Cambio) {
+        fileData.element.innerHTML = '';
+        fileData.circleSpan.style.color = fileContent[fileContent.length - 1].Cambio === 1 ? 'red' : 'black';
+        fileData.element.appendChild(fileData.circleSpan);
+        fileData.element.innerHTML += `${fileNameWithoutExtension}: <br>${lastTwoWords}`;
+        fileData.lastTwoWords = lastTwoWords;
+        fileData.cambioValue = fileContent[fileContent.length - 1].Cambio;  // Actualizar el valor de Cambio
+      }
+    }
+  }
+
+  // Añadir nuevos divs al DOM y aplicar el filtro
+  newDivs.forEach(div => historialDiv.appendChild(div));
+  //historialDiv.appendChild(document.createElement('br'));  // Añadir un <br> después de los nuevos divs
+  
+  // Añadir un div vacío al final para asegurar que haya espacio suficiente
+  const spacer = document.createElement('div');
+  spacer.style.height = '50px';  // Ajusta la altura según sea necesario
+ // historialDiv.appendChild(spacer);
+
+  // Aplicar el filtro después de actualizar
+  aplicarFiltro();
+}
+
+// Función para aplicar el filtro
+function aplicarFiltro() {
+  const divs = historialDiv.querySelectorAll('.whatsapp-box');
+  divs.forEach(div => {
+    // Extrae el texto limpio del `div`, sin etiquetas HTML ni caracteres especiales
+    const rawFileName = div.textContent.split(':')[0].trim();
+    
+    // Limpia el nombre del archivo de caracteres no deseados (como el punto)
+    const fileName = rawFileName.replace(/[^a-zA-Z0-9]/g, ''); // Elimina caracteres no alfanuméricos
+    const fileKey = `${fileName}.json`;
+    
+    // Accede al contenido del archivo JSON en loadedFiles
+    const fileContent = loadedFiles[fileKey];
+    
+    console.log(`FileName extracted: ${rawFileName}`);
+    console.log(`Cleaned FileName: ${fileName}`);
+    console.log(`FileKey: ${fileKey}`);
+    console.log(`FileContent:`, fileContent); // Imprime el objeto completo
+    
+    if (filterActive) {
+      if (fileContent && fileContent.circleSpan.style.color === 'red') {
+        div.style.display = 'block';  // Mostrar el div
+      } else {
+        div.style.display = 'none';  // Ocultar el div
+      }
+    } else {
+      div.style.display = 'block';  // Mostrar todos los divs
+    }
+  });
+}
+
+// Función asincrónica para cargar el historial de mensajes
+async function cargarHistorial() {
+  await actualizarHistorial();
+}
+
+// Función que crea un manejador de eventos para el click de cada enlace
+function createClickHandler(fileName, link) {
+  return async () => {
+    console.log(`Haciendo clic en ${fileName}`);
+    const fileContentResponse = await fetch(`/sala6/${fileName}.json`);
+    const fileContent = await fileContentResponse.json();
+    console.log(`Contenido del archivo ${fileName}:`, fileContent);
+
+    // Actualiza MensajeIndex sin modificar el estado de Cambio en el archivo
+    MensajeIndexS6.length = 0;
+    MensajeIndexS6.push(...fileContent);
+    console.log('MensajeIndex actualizado:', MensajeIndexS6);
+
+    const updateServerResponse = await fetch('/MensajeIndexS6', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(MensajeIndexS6)
+    });
+
+    if (updateServerResponse.ok) {
+      console.log('MensajeIndex enviado al servidor');
+    } else {
+      console.error('Error al enviar MensajeIndex al servidor');
+    }
+
+    if (selectedDiv) {
+      selectedDiv.classList.remove('selected');
+    }
+    link.classList.add('selected');
+    selectedDiv = link;
+
+    // Guardar el nombre del archivo seleccionado
+    currentFileName = fileName;
+    // Limpiar el intervalo anterior si existe
+    if (checkInterval) {
+      clearInterval(checkInterval);
+    }
+    // Configurar un intervalo para verificar cambios en el archivo seleccionado cada 5 segundos
+    checkInterval = setInterval(() => verificarCambiosArchivo(fileName), 5000);
+  };
+}
+
+// Función para verificar cambios en el archivo seleccionado
+async function verificarCambiosArchivo(fileName) {
+  const fileContentResponse = await fetch(`/sala6/${fileName}.json`);
+  const fileContent = await fileContentResponse.json();
+
+  // Si el contenido del archivo ha cambiado, actualizar MensajeIndex
+  if (MensajeIndexS6.length !== fileContent.length) {
+    console.log(`Detectados nuevos datos en ${fileName}, actualizando MensajeIndexS2`);
+    MensajeIndexS6.length = 0;
+    MensajeIndexS6.push(...fileContent);
+    console.log('MensajeIndex actualizado:', MensajeIndexS6);
+
+    const updateServerResponse = await fetch('/MensajeIndexS6', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(MensajeIndexS6)
+    });
+
+    if (updateServerResponse.ok) {
+      console.log('MensajeIndex enviado al servidor');
+    } else {
+      console.error('Error al enviar MensajeIndex al servidor');
+    }
+  }
+}
+
+// Agregar evento de click al botón para activar o desactivar el filtro
+filterButton.addEventListener('click', () => {
+  filterActive = !filterActive;
+  filterButton.textContent = filterActive ? 'Mostrar Todos' : 'Filtrar Leidos';
+  // Actualizar el historial y aplicar el filtro
+  actualizarHistorial();
+});
+
+// Cargar el historial al inicio
+cargarHistorial();
+// Configurar un intervalo para recargar el historial cada 10 segundos
+setInterval(cargarHistorial, 10000);
+
+
+
+   
+
+
+</script>
+
+
+
+
+
+
+
+<script>
+
+
+
+    // ESTE FRAGMENTO COLCOA EL NOMBRE EL USUARIO EN PANTALLA /////////
+
+    function obtenerUsuario1() {
+        // Realiza una solicitud GET al servidor
+        fetch('/Usuarioget6')
+            .then(response => response.text())
+            .then(data => {
+                // Verifica si data no está vacío antes de mostrarlo
+                if (data.trim() !== '') {
+                    const mensaje = `Usuario: ${data}`;
+                    document.getElementById('resultado').innerHTML = mensaje;
+                } else {
+                    // Si data está vacío, no muestra nada en el cliente
+                    document.getElementById('resultado').innerHTML = '';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    // Llama a la función obtenerUsuario1() cada 2 segundos
+    setInterval(obtenerUsuario1, 1000);
+
+
+
+
+    // ESTE NUMERO USUARIO EN PANTALLA /////////
+
+    function Buscarord() {
+        // Realiza una solicitud GET al servidor
+        fetch('/BuscaOrden6')
+            .then(response => response.text())
+            .then(data => {
+                // Verifica si data no está vacío antes de mostrarlo
+                if (data.trim() !== '') {
+                    const mensaje = `Número: ${data}`;
+                    document.getElementById('BuscarOrden').innerHTML = mensaje;
+                } else {
+                    // Si data está vacío, no muestra nada en el cliente
+                    document.getElementById('BuscarOrden').innerHTML = '';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    // Llama a la función obtenerUsuario1() cada 2 segundos
+    setInterval(Buscarord, 2000);
+
+
+
+
+
+
+
+
+    // //////////////////////////
+
+
+
+    // esto reinicia el array 
+    document.getElementById('resetButton').addEventListener('click', function () {
+        // Realizar una solicitud al servidor para reiniciar el array
+        fetch('/reset-array6', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                 alert(data.message); // Mostrar mensaje del servidor
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+
+
+
+
+
+   // funcion para recibir los mensajes 
+   async function cargarMensajes() {
+        try {
+            const response = await fetch('/obtenerMensajes6');
+            const data = await response.json();
+
+            const messagesDiv = document.getElementById('messages1');
+
+            messagesDiv.innerHTML = '';
+
+            data.filter(message => message.trim() !== '').forEach(message => {
+                if (isURL(message)) {
+                    if (message.endsWith('.ogg')) {
+                        const audioElement = document.createElement('audio');
+                        audioElement.src = message;
+                        audioElement.controls = true; // Agregar controles de reproducción
+                        audioElement.style.marginBottom = '20px'; // Espacio entre elementos
+                        messagesDiv.appendChild(audioElement);
+                    } else if (message.endsWith('.pdf')) {
+                        const pdfThumbnail = document.createElement('img');
+                        pdfThumbnail.src = 'https://i.ibb.co/k9xpHX2/337946.png'; // Cambia a la ruta de tu icono de PDF
+                        pdfThumbnail.alt = 'PDF Thumbnail';
+                        pdfThumbnail.style.width = '200px'; // Establece el ancho de la miniatura
+                        pdfThumbnail.style.height = '200px'; // Establece la altura de la miniatura
+                        pdfThumbnail.style.cursor = 'pointer'; // Cambia el cursor al pasar sobre la miniatura
+                        pdfThumbnail.style.marginBottom = '20px'; // Espacio entre elementos
+                        pdfThumbnail.addEventListener('click', function () {
+                            const newWindow = window.open(message, '_blank');
+                            if (newWindow) {
+                                newWindow.focus();
+                            } else {
+                                alert('La ventana emergente fue bloqueada. Por favor, permite las ventanas emergentes para ver el PDF.');
+                            }
+                        });
+
+                        messagesDiv.appendChild(pdfThumbnail);
+                    } else {
+                        const imageElement = document.createElement('img');
+                        imageElement.src = message;
+                        imageElement.alt = 'Imagen cargada dinámicamente';
+                        imageElement.style.width = '200px'; // Establece el ancho de la imagen
+                        imageElement.style.height = '200px'; // Establece la altura de la imagen
+                        imageElement.style.objectFit = 'cover'; // Ajusta la imagen para que llene el contenedor manteniendo la relación de aspecto
+                        imageElement.style.cursor = 'pointer'; // Cambia el cursor al pasar sobre la imagen
+                        imageElement.style.marginBottom = '20px'; // Espacio entre elementos
+                        imageElement.addEventListener('click', function () {
+                            const newWindow = window.open(message, '_blank');
+                            if (newWindow) {
+                                newWindow.focus();
+                            } else {
+                                alert('La ventana emergente fue bloqueada. Por favor, permite las ventanas emergentes para ver la imagen.');
+                            }
+                        });
+
+                        messagesDiv.appendChild(imageElement);
+                    }
+                } else {
+                    const messageElement = document.createElement('div');
+                    messageElement.textContent = message;
+
+                    // Establecer estilos...
+                    messageElement.style.padding = '10px';
+                    messageElement.style.borderRadius = '8px';
+                    messageElement.style.marginBottom = '20px';
+                    messageElement.style.fontSize = '16px';
+                    messageElement.style.wordWrap = 'break-word';
+                    messageElement.style.position = 'relative'; // Para usar posición absoluta en la sombra
+
+                    // Colocar mensajes que empiezan con "Asesor" a la izquierda
+                    if (message.startsWith('Asesor:')) {
+                        messageElement.style.textAlign = 'left';
+                        messageElement.style.backgroundColor = '#f0f0f0';
+                    } else {
+                        messageElement.style.textAlign = 'right';
+                        messageElement.style.backgroundColor = '#e2f7cb'; // Color de fondo para mensajes no "Asesor"
+                    }
+
+                    // Añadir sombra
+                    const shadow = document.createElement('div');
+                    shadow.className = 'message-shadow';
+                    shadow.style.position = 'absolute';
+                    shadow.style.top = '0';
+                    shadow.style.left = '0';
+                    shadow.style.width = `${messageElement.scrollWidth}px`; // Ancho igual al ancho del texto
+                    shadow.style.height = `${messageElement.scrollHeight}px`; // Alto igual al alto del texto
+                    shadow.style.borderRadius = '8px';
+                    shadow.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)'; // Sombras más cortas
+                    messageElement.appendChild(shadow);
+
+                    messagesDiv.appendChild(messageElement);
+                }
+            });
+        } catch (error) {
+            console.error('Error al cargar mensajes:', error);
+        }
+    }
+
+    function isURL(str) {
+        // Función para verificar si una cadena es una URL
+        const pattern = /^(http|https):\/\/[^ "]+$/;
+        return pattern.test(str);
+    }
+
+
+
+
+
+
+
+    // funcion paar enviar mensajes
+    async function enviarRespuesta() {
+        const responseText = document.getElementById('response').value;
+        const response = await fetch('/responderMensaje6', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ response: responseText })
+        });
+
+        document.getElementById('response').value = '';
+        cargarMensajes();
+    }
+
+    function enviarAutomaticamenteDespuesDeUnSegundo() {
+        setTimeout(() => {
+            fetch('/actualizar6', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    // Manejar la respuesta de la solicitud aquí si es necesario
+                    console.log('Solicitud automática completada:', data);
+                })
+                .catch(error => {
+                    console.error('Error al realizar la solicitud automática:', error);
+                });
+        }, 1000); // Espera 1 segundo (1000 milisegundos) antes de enviar la solicitud
+    }
+
+    function cambiarColorBoton(color) {
+        document.getElementById('enviarRespuesta1').style.backgroundColor = color;
+    }
+
+    cargarMensajes();
+
+    document.getElementById('enviarRespuesta1').addEventListener('click', () => {
+        cambiarColorBoton('red'); // Cambiar color a rojo al hacer clic
+        enviarRespuesta();
+        enviarAutomaticamenteDespuesDeUnSegundo();
+
+        setTimeout(() => {
+            cambiarColorBoton('green'); // Cambiar color a verde después de 2 segundos
+        }, 2000);
+    });
+
+
+
+
+
+
+
+
+
+    // Función para pegar la imagen desde el portapapeles
+    const pasteImage = async (event) => {
+        try {
+            const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+
+            for (const item of items) {
+                if (item.type.indexOf('image') !== -1) {
+                    const blob = item.getAsFile();
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        // Mostrar la imagen en la página
+                        document.getElementById('screenshotImage').src = e.target.result;
+                        document.getElementById('screenshotImage').style.display = 'inline'; // Mostrar la imagen
+                        document.getElementById('saveButton').style.display = 'inline'; // Mostrar el botón
+                    };
+
+                    reader.readAsDataURL(blob);
+                }
+            }
+        } catch (error) {
+            console.error('Error al pegar la imagen:', error);
+        }
+    };
+
+    // Evento al pegar en la página
+    document.body.addEventListener('paste', pasteImage);
+
+    // Evento al hacer clic en el botón "Guardar"
+    document.getElementById('saveButton').addEventListener('click', async () => {
+        try {
+            // Obtener la imagen del elemento <img>
+            const screenshotImage = document.getElementById('screenshotImage');
+            const imageDataUrl = screenshotImage.src;
+
+            // Crear un objeto Blob a partir de la imagen en formato base64
+            const blob = await (await fetch(imageDataUrl)).blob();
+
+            // Generar un número aleatorio entre 1 y 10000 para el nombre del archivo
+            const randomNum = Math.floor(Math.random() * 1000000) + 1;
+            const filename = `screenshots-${randomNum}.jpg`;
+
+            // Crear un FormData y agregar el Blob con el nombre aleatorio
+            const formData = new FormData();
+            formData.append('screenshot', blob, filename);
+
+            // Realizar una solicitud POST para guardar la captura de pantalla
+            const response = await fetch('/save-screenshotsmagisterio6', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await response.text();
+            alert(result);
+
+            // Ocultar la imagen y el botón después de aceptar el alert
+            screenshotImage.style.display = 'none';
+            document.getElementById('saveButton').style.display = 'none';
+
+            // Esperar un segundo antes de enviar la solicitud POST adicional
+            setTimeout(async () => {
+                const response2 = await fetch('/actualizarimg6', {
+                    method: 'POST',
+                    // Puedes enviar datos adicionales si es necesario
+                });
+                const result2 = await response2.text();
+                console.log(result2);
+            }, 1000); // 1000 milisegundos = 1 segundo
+        } catch (error) {
+            console.error('Error al intentar guardar la captura de pantalla:', error);
+        }
+    });
+
+
+
+
+
+
+
+    // Actualizar automáticamente cada 5 segundos (5000 milisegundos)
+    setInterval(cargarMensajes, 3000);
+
+
+
+
+
+
+      // Función para pegar enviar PDF 
+
+      document.getElementById('uploadButtonpdf').addEventListener('click', () => {
+        document.getElementById('pdfInput').click();
+    });
+
+    document.getElementById('pdfInput').addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            document.getElementById('saveButtonpdf').style.display = 'inline';
+        }
+    });
+
+    document.getElementById('saveButtonpdf').addEventListener('click', async () => {
+        try {
+            const pdfInput = document.getElementById('pdfInput');
+            const file = pdfInput.files[0];
+
+            if (!file) {
+                alert('Por favor selecciona un archivo PDF primero.');
+                return;
+            }
+
+            // Generar un número aleatorio entre 1 y 100000 para agregar al nombre del archivo
+            const randomNum = Math.floor(Math.random() * 100000) + 1;
+            const fileExtension = file.name.split('.').pop();
+            const filename = `${file.name.replace(`.${fileExtension}`, '')}-${randomNum}.${fileExtension}`;
+
+            // Crear un nuevo archivo con el nombre modificado
+            const newFile = new File([file], filename, { type: file.type });
+
+            const formData = new FormData();
+            formData.append('pdf', newFile);
+
+
+            const response = await fetch('/save-PDF6', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await response.text();
+            alert(result);
+
+            // Ocultar el botón después de aceptar el alert
+            document.getElementById('saveButtonpdf').style.display = 'none';
+
+            // Esperar un segundo antes de enviar la solicitud POST adicional
+            // setTimeout(async () => {
+            //   const response2 = await fetch('/actualizarimg', {
+            //     method: 'POST',
+            //   });
+            //   const result2 = await response2.text();
+            //   console.log(result2);
+            // }, 1000); // 1000 milisegundos = 1 segundo
+
+        } catch (error) {
+            console.error('Error al intentar guardar el PDF:', error);
+        }
+    });
+
+
+
+
+
+
+</script>
+</body>
+
+</html>
