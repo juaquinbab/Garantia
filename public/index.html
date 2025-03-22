@@ -144,13 +144,10 @@
 
   <div class="container">
     <div class="botones">
-      <div class="boton" onclick="redireccionar1()">Sala de citas 1 - Usuarios: <span id="usuariosSala1">0</span></div>
-      <div class="boton" onclick="redireccionar2()">Sala de Laboratorio - Usuarios: <span id="usuariosSala2">0</span></div>
-      <div class="boton" onclick="redireccionar3()">Sala de citas 2 - Usuarios: <span id="usuariosSala3">0</span></div>
-      <div class="boton" onclick="redireccionar5()">Sala de Odontología - Usuarios: <span id="usuariosSala5">0</span></div>
-      <div class="boton" onclick="redireccionar6()">Sala de Prepagada - Usuarios: <span id="usuariosSala6">0</span></div>
-      <div class="boton" onclick="redireccionar7()">Sala de Particulares - Usuarios: <span id="usuariosSala7">0</span></div>
-      <div class="boton" onclick="redireccionar8()">Sala de Asesoria - Usuarios: <span id="usuariosSala8">0</span></div>
+      <div class="boton" onclick="redireccionar1()">Sala de chat 1 - Usuarios: <span id="usuariosSala1">0</span></div>
+      <div class="boton" onclick="redireccionar2()">Sala de chat 2 - Usuarios: <span id="usuariosSala2">0</span></div>
+      <div class="boton" onclick="redireccionar3()">Sala de chat 3 - Usuarios: <span id="usuariosSala3">0</span></div>
+      
       <!-- <div class="boton" onclick="redireccionar9()">Usuarios Por Día - Usuarios: <span id="UsuariosDIA">0</span></div> -->
     </div>
     <div class="reloj" id="reloj">00:00:00</div>
@@ -173,31 +170,47 @@
   </script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  
   <script>
     function redireccionar1() {
-      window.location.href = 'https://garantia-production.up.railway.app//inicio.html';
+        const contraseñaCorrecta = "sala1-1234"; // Cambia esto por la contraseña que desees
+        const contraseñaIngresada = prompt("Ingrese la contraseña:");
+
+        if (contraseñaIngresada === contraseñaCorrecta) {
+            window.location.href = 'https://garantia-production.up.railway.app///inicio.html';
+        } else {
+            alert("Contraseña incorrecta. Inténtelo de nuevo.");
+        }
     }
 
     $(document).ready(function() {
-      // Función para realizar la solicitud al servidor y actualizar el contenido
-      function actualizarContenido() {
-        $.get('/Coladeespera1', function(data) {
-          $('#usuariosSala1').text(data);
-        });
-      }
+        // Función para realizar la solicitud al servidor y actualizar el contenido
+        function actualizarContenido() {
+            $.get('/Coladeespera1', function(data) {
+                $('#usuariosSala1').text(data);
+            });
+        }
 
-      // Llamar a la función inicialmente para obtener el dato y actualizar el contenido
-      actualizarContenido();
+        // Llamar a la función inicialmente para obtener el dato y actualizar el contenido
+        actualizarContenido();
 
-      // Establecer la actualización periódica cada 10 segundos
-      setInterval(actualizarContenido, 60000); // 10000 milisegundos = 10 segundos
+        // Establecer la actualización periódica cada 60 segundos
+        setInterval(actualizarContenido, 60000);
     });
-  </script>
+</script>
 
 
 <script>
   function redireccionar2() {
-    window.location.href = 'https://garantia-production.up.railway.app//iniciosala4.html';
+    const contraseñaCorrecta = "sala2-1234"; // Cambia esto por la contraseña que desees
+    const contraseñaIngresada = prompt("Ingrese la contraseña:");
+
+    if (contraseñaIngresada === contraseñaCorrecta) {
+      window.location.href = 'https://garantia-production.up.railway.app/iniciosala2.html';
+    } else {
+      alert("Contraseña incorrecta. Inténtelo de nuevo.");
+    }
   }
 
   $(document).ready(function() {
@@ -211,18 +224,23 @@
     // Llamar a la función inicialmente para obtener el dato y actualizar el contenido
     actualizarContenido2();
 
-    // Establecer la actualización periódica cada 10 segundos
-    setInterval(actualizarContenido2, 60000); // 10000 milisegundos = 10 segundos
+    // Establecer la actualización periódica cada 60 segundos
+    setInterval(actualizarContenido2, 60000);
   });
 </script>
 
 
 
-
-
 <script>
   function redireccionar3() {
-    window.location.href = 'https://garantia-production.up.railway.app//iniciosala2.html';
+    const contraseñaCorrecta = "sala3-1234"; // Cambia esto por la contraseña que desees
+    const contraseñaIngresada = prompt("Ingrese la contraseña:");
+
+    if (contraseñaIngresada === contraseñaCorrecta) {
+      window.location.href = 'https://garantia-production.up.railway.app//iniciosala3.html';
+    } else {
+      alert("Contraseña incorrecta. Inténtelo de nuevo.");
+    }
   }
 
   $(document).ready(function() {
@@ -236,107 +254,14 @@
     // Llamar a la función inicialmente para obtener el dato y actualizar el contenido
     actualizarContenido3();
 
-    // Establecer la actualización periódica cada 10 segundos
-    setInterval(actualizarContenido3, 60000); // 10000 milisegundos = 10 segundos
+    // Establecer la actualización periódica cada 60 segundos
+    setInterval(actualizarContenido3, 60000);
   });
 </script>
 
 
 
 
-<script>
-  function redireccionar5() {
-    window.location.href = 'https://garantia-production.up.railway.app//iniciosala7.html';
-  }
-
-  $(document).ready(function() {
-    // Función para realizar la solicitud al servidor y actualizar el contenido
-    function actualizarContenido5() {
-      $.get('/Coladeespera5', function(data) {
-        $('#usuariosSala5').text(data);
-      });
-    }
-
-    // Llamar a la función inicialmente para obtener el dato y actualizar el contenido
-    actualizarContenido5();
-
-    // Establecer la actualización periódica cada 10 segundos
-    setInterval(actualizarContenido5, 60000); // 10000 milisegundos = 10 segundos
-  });
-</script>
-
-
-
-<script>
-  function redireccionar6() {
-    window.location.href = 'https://garantia-production.up.railway.app//iniciosala3.html';
-  }
-
-  $(document).ready(function() {
-    // Función para realizar la solicitud al servidor y actualizar el contenido
-    function actualizarContenido6() {
-      $.get('/Coladeespera6', function(data) {
-        $('#usuariosSala6').text(data);
-      });
-    }
-
-    // Llamar a la función inicialmente para obtener el dato y actualizar el contenido
-    actualizarContenido6();
-
-    // Establecer la actualización periódica cada 10 segundos
-    setInterval(actualizarContenido6, 60000); // 10000 milisegundos = 10 segundos
-  });
-</script>
-
-
-
-
-
-
-<script>
-  function redireccionar7() {
-    window.location.href = 'https://garantia-production.up.railway.app//iniciosala5.html';
-  }
-
-  $(document).ready(function() {
-    // Función para realizar la solicitud al servidor y actualizar el contenido
-    function actualizarContenido7() {
-      $.get('/Coladeespera7', function(data) {
-        $('#usuariosSala7').text(data);
-      });
-    }
-
-    // Llamar a la función inicialmente para obtener el dato y actualizar el contenido
-    actualizarContenido7();
-
-    // Establecer la actualización periódica cada 10 segundos
-    setInterval(actualizarContenido7, 60000); // 10000 milisegundos = 10 segundos
-  });
-</script>
-
-
-
-
-<script>
-  function redireccionar8() {
-    window.location.href = 'https://garantia-production.up.railway.app//iniciosala7.html';
-  }
-
-  $(document).ready(function() {
-    // Función para realizar la solicitud al servidor y actualizar el contenido
-    function actualizarContenido8() {
-      $.get('/Coladeespera8', function(data) {
-        $('#usuariosSala8').text(data);
-      });
-    }
-
-    // Llamar a la función inicialmente para obtener el dato y actualizar el contenido
-    actualizarContenido8();
-
-    // Establecer la actualización periódica cada 10 segundos
-    setInterval(actualizarContenido8, 60000); // 10000 milisegundos = 10 segundos
-  });
-</script>
 
 
 

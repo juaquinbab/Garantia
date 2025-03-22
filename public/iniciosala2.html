@@ -5,15 +5,20 @@
     <style>
         .sidebar {
             width: 200px;
-            height: calc(96% - 78px);
+            /* Ancho de la columna de usuarios */
+            height: 100%;
             position: fixed;
+            /* Fijar la posición */
             top: 78px;
+            /* Asegurar que la barra lateral comience debajo de la cabecera */
             left: 0;
             background-color: #f4f4f4;
-            overflow-y: scroll;
-            /* Scroll siempre visible */
+            /* Color de fondo */
+            overflow-y: auto;
+            /* Permitir desplazamiento vertical si la lista es muy larga */
             padding: 20px;
             z-index: 98;
+            /* Asegurarse de que la barra lateral esté detrás de la cabecera */
         }
 
         /* Estilos para los elementos de la lista de usuarios */
@@ -47,6 +52,7 @@
         }
 
         body {
+            zoom: 80%;
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #ffffff;
@@ -56,6 +62,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+
         }
 
 
@@ -93,6 +100,14 @@
             margin-top: 20px;
         }
 
+        #moverArchivoBtn {
+            background-color: rgb(255, 255, 255);
+            /* Cambiar el color a rojo */
+            color: #2cda00;
+            align-self: flex-end;
+            /* Cambiar a flex-end para alinear a la derecha */
+            margin-top: 20px;
+        }
 
 
         #saveButtonpdf {
@@ -113,6 +128,9 @@
             /* Cambiar a flex-end para alinear a la derecha */
             margin-top: 20px;
         }
+
+
+
 
 
         .floating-window {
@@ -397,6 +415,12 @@
             border: 2px solid blue;
             /* Ejemplo de un borde */
         }
+
+        #historial {
+            overflow-y: auto;
+            max-height: 80vh;
+            /* Ajusta la altura máxima según sea necesario */
+        }
     </style>
 </head>
 
@@ -404,20 +428,18 @@
 <!-- Cabecera -->
 <div id="header">
     <div>
-        <img src="logo.png" alt="Logo"> <!-- Colocar el logo aquí -->
+      <img src="logo.png" alt="Logo"> <!-- Colocar el logo aquí -->
     </div>
     <div class="cabecera-elementos">
-        <div id="resultado">Resultado</div>
-        <div id="BuscarOrden">Buscar Orden</div>
-
+      <div id="resultado">Resultado</div>
+      <div id="BuscarOrden">Buscar Orden</div>
+  
     </div>
     <div>
-        <button id="resetButton">Reiniciar Usuario</button>
-
-        <input type="file" id="pdfInput" accept="application/pdf" style="display: none;">
-        <button id="uploadButtonpdf">Cargar PDF</button>
-        <button id="saveButtonpdf" style="display: none;">Enviar PDF</button>
-
+      <button id="resetButton">Soporte</button>
+      <button id="moverArchivoBtn">Soporte</button>
+  
+  
     </div>
 
 </div>
@@ -425,8 +447,13 @@
 
 <div class="sidebar">
     <h2>Usuarios</h2>
+    <input 
+    type="text" 
+    id="campoBusqueda" 
+    placeholder="Buscar..." 
+    oninput="aplicarBusqueda(this.value)">
     <div id="historial"></div>
-</div>
+  </div>
 
 
 <!-- Contenedor principal -->
@@ -930,7 +957,7 @@
                         timeElement.style.position = 'absolute'; // Para alinear a izquierda o derecha
 
                         // Mostrar el mensaje y la hora según el origen
-                        if (body.startsWith('Asesor:')) {
+                        if (body.startsWith('Juan:')) {
                             messageElement.style.textAlign = 'left';
                             messageElement.style.backgroundColor = '#f0f0f0';
                             messageElement.style.marginLeft = '10px'; // Ajustar alineación del mensaje a la izquierda
