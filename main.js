@@ -870,40 +870,75 @@ app.post("/webhook", function (request, response) {
 
 
 
-  const folderPathlaboratoriosala1 = './sala1'; // Carpeta donde se guardarán los archivos JSON
+const folderPath15 = './sala1';
+const folderPath16 = './sala2';
+const folderPath17 = './sala3';
+const batchSize = 10;
 
+function archivoExisteEnCarpetas(fileName) {
+  const filePath15 = path.join(folderPath15, fileName);
+  const filePath16 = path.join(folderPath16, fileName);
+  const filePath17 = path.join(folderPath17, fileName);
 
-  function procesarlaboratorio1(mensajes) {
-    const mensajesBatch = mensajes.splice(0, batchSize); // Obtener el próximo lote de mensajes
+  if (fs.existsSync(filePath15)) {
+    return { exists: true, filePath: filePath15 };
+  } else if (fs.existsSync(filePath16)) {
+    return { exists: true, filePath: filePath16 };
+  } else if (fs.existsSync(filePath17)) {
+    return { exists: true, filePath: filePath17 };
+  } else {
+    return { exists: false, filePath: null };
+  }
+}
 
-    mensajesBatch.forEach((mensaje) => {
-      // Supongamos que 'etapa' es una propiedad del objeto dentro de EtapasMSG
-      if (mensaje.etapa >= 0 && mensaje.etapa <= 100) {
-        const filePath = `${folderPathlaboratoriosala1}/${mensaje.from}.json`;
+function procesarMensajesBatch15(mensajes) {
+  const mensajesBatch = mensajes.splice(0, batchSize);
 
-        if (fs.existsSync(filePath)) {
-          const existingData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  mensajesBatch.forEach((mensaje, index) => {
+    if (mensaje.etapa >= 4 && mensaje.etapa <= 14) {
+      let folderPath;
+      if (index % 3 === 0) {
+        folderPath = folderPath15;
+      } else if (index % 3 === 1) {
+        folderPath = folderPath16;
+      } else {
+        folderPath = folderPath17;
+      }
+
+      const fileName = `${mensaje.from}.json`;
+      const filePath = path.join(folderPath, fileName);
+
+      try {
+        const archivoExistencia = archivoExisteEnCarpetas(fileName);
+
+        if (archivoExistencia.exists) {
+          const existingData = JSON.parse(fs.readFileSync(archivoExistencia.filePath, 'utf8'));
           const isDuplicateBody = existingData.some((existingMensaje) => existingMensaje.body === mensaje.body);
 
           if (!isDuplicateBody) {
             existingData.push(mensaje);
-            fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
+            fs.writeFileSync(archivoExistencia.filePath, JSON.stringify(existingData, null, 2));
           }
         } else {
           fs.writeFileSync(filePath, JSON.stringify([mensaje], null, 2));
         }
+      } catch (error) {
+        console.error(`Error procesando el mensaje ${mensaje.from}:`, error);
       }
-    });
-
-    if (mensajes.length > 0) {
-      setTimeout(() => {
-        procesarlaboratorio1(mensajes); // Procesar el siguiente lote después de un tiempo de espera
-      }, 1000); // Esperar 1 segundo entre lotes
     }
-  }
+  });
 
-  // Iniciar el procesamiento por lotes
-  procesarlaboratorio1(EtapasMSG.slice());
+  if (mensajes.length > 0) {
+    setTimeout(() => {
+      procesarMensajesBatch15(mensajes);
+    }, 1000);
+  }
+}
+
+procesarMensajesBatch15(EtapasMSG.slice());
+
+
+
 
 
 
