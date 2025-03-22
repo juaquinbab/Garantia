@@ -846,13 +846,13 @@ setInterval(cargarHistorial, 10000);
                     messageElement.style.wordWrap = 'break-word';
                     messageElement.style.position = 'relative'; // Para usar posición absoluta en la sombra
 
-                    // Colocar mensajes que empiezan con "Asesor" a la izquierda
-                    if (message.startsWith('Asesor:')) {
+                    // Colocar mensajes que empiezan con "Juan" a la izquierda
+                    if (message.startsWith('Juan:')) {
                         messageElement.style.textAlign = 'left';
                         messageElement.style.backgroundColor = '#f0f0f0';
                     } else {
                         messageElement.style.textAlign = 'right';
-                        messageElement.style.backgroundColor = '#e2f7cb'; // Color de fondo para mensajes no "Asesor"
+                        messageElement.style.backgroundColor = '#e2f7cb'; // Color de fondo para mensajes no "Juan"
                     }
 
                     // Añadir sombra

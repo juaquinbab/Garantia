@@ -1335,12 +1335,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
       if (mensaje.body.startsWith("Juan:")) {
-        ultimoMensajeAsesor = {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -1350,7 +1350,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje(mensaje) {
@@ -1417,12 +1417,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje2(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
       if (mensaje.body.startsWith("Juan:")) {
-        ultimoMensajeAsesor = {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -1432,7 +1432,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje2(mensaje) {
@@ -1499,12 +1499,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje3(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
       if (mensaje.body.startsWith("Juan:")) {
-        ultimoMensajeAsesor = {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -1514,7 +1514,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje3(mensaje) {
@@ -1582,12 +1582,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje4(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
-      if (mensaje.body.startsWith("Asesor:")) {
-        ultimoMensajeAsesor = {
+      if (mensaje.body.startsWith("Juan:")) {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -1597,7 +1597,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje4(mensaje) {
@@ -1663,12 +1663,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje5(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
-      if (mensaje.body.startsWith("Asesor:")) {
-        ultimoMensajeAsesor = {
+      if (mensaje.body.startsWith("Juan:")) {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -1678,7 +1678,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje5(mensaje) {
@@ -1748,12 +1748,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje6(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
-      if (mensaje.body.startsWith("Asesor:")) {
-        ultimoMensajeAsesor = {
+      if (mensaje.body.startsWith("Juan:")) {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -1763,7 +1763,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje6(mensaje) {
@@ -1833,12 +1833,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje7(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
-      if (mensaje.body.startsWith("Asesor:")) {
-        ultimoMensajeAsesor = {
+      if (mensaje.body.startsWith("Juan:")) {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -1848,7 +1848,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje7(mensaje) {
@@ -1918,12 +1918,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje8(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
-      if (mensaje.body.startsWith("Asesor:")) {
-        ultimoMensajeAsesor = {
+      if (mensaje.body.startsWith("Juan:")) {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -1933,7 +1933,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje8(mensaje) {
@@ -2002,12 +2002,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje9(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
-      if (mensaje.body.startsWith("Asesor:")) {
-        ultimoMensajeAsesor = {
+      if (mensaje.body.startsWith("Juan:")) {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -2017,7 +2017,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje9(mensaje) {
@@ -2088,12 +2088,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje10(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
-      if (mensaje.body.startsWith("Asesor:")) {
-        ultimoMensajeAsesor = {
+      if (mensaje.body.startsWith("Juan:")) {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -2103,7 +2103,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje10(mensaje) {
@@ -2173,12 +2173,12 @@ app.post("/webhook", function (request, response) {
 
 
   function filtrarMensaje11(mensajes) {
-    let ultimoMensajeAsesor = null;
+    let ultimoMensajeJuan = null;
 
     for (let i = mensajes.length - 1; i >= 0; i--) {
       const mensaje = mensajes[i];
-      if (mensaje.body.startsWith("Asesor:")) {
-        ultimoMensajeAsesor = {
+      if (mensaje.body.startsWith("Juan:")) {
+        ultimoMensajeJuan = {
           body: mensaje.body,
           from: mensaje.from,
           name: mensaje.name,
@@ -2188,7 +2188,7 @@ app.post("/webhook", function (request, response) {
       }
     }
 
-    return ultimoMensajeAsesor;
+    return ultimoMensajeJuan;
   }
 
   function enviarMensaje11(mensaje) {
@@ -2275,7 +2275,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje1', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndex[MensajeIndex.length - 1]; // Obtener el último mensaje guardado
 
@@ -2358,7 +2358,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje2', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS2[MensajeIndexS2.length - 1]; // Obtener el último mensaje guardado
 
@@ -2443,7 +2443,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje3', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS3[MensajeIndexS3.length - 1]; // Obtener el último mensaje guardado
 
@@ -2533,7 +2533,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje4', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS4[MensajeIndexS4.length - 1]; // Obtener el último mensaje guardado
 
@@ -2604,7 +2604,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje5', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS5[MensajeIndexS5.length - 1]; // Obtener el último mensaje guardado
 
@@ -2682,7 +2682,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje6', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS6[MensajeIndexS6.length - 1]; // Obtener el último mensaje guardado
 
@@ -2763,7 +2763,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje7', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS7[MensajeIndexS7.length - 1]; // Obtener el último mensaje guardado
 
@@ -2837,7 +2837,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje8', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS8[MensajeIndexS8.length - 1]; // Obtener el último mensaje guardado
 
@@ -2910,7 +2910,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje9', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS9[MensajeIndexS9.length - 1]; // Obtener el último mensaje guardado
 
@@ -2980,7 +2980,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje10', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS10[MensajeIndexS10.length - 1]; // Obtener el último mensaje guardado
 
@@ -3058,7 +3058,7 @@ app.post("/webhook", function (request, response) {
 
   app.post('/responderMensaje11', (req, res) => {
     const response = req.body.response; // Obtener la respuesta del cuerpo de la solicitud
-    const modifiedResponse = `Asesor: ${response}`; // Agregar "asesor: " al inicio de la respuesta
+    const modifiedResponse = `Juan: ${response}`; // Agregar "Juan: " al inicio de la respuesta
 
     const lastMessage = MensajeIndexS11[MensajeIndexS11.length - 1]; // Obtener el último mensaje guardado
 
@@ -3883,7 +3883,7 @@ app.post("/webhook", function (request, response) {
           type: 'text',
           text: {
             preview_url: false,
-            body: '¡Bienvenido/a a la Clínica Medsalud!\n \n*Por favor, indica el número de la opción que deseas consultar:* 📋 \n \nEn el momento que desees escribe *REGRESAR* para volver a este menú  \n \n 1️⃣Agendar citas médicas y RX\n \n 2️⃣ Asesor Cirugías \n \n 3️⃣ Agendar citas laboratorio \n \n 4️⃣ Servicios Particulares \n \n 5️⃣ Descarga de Laboratorios \n \n 6️⃣ Descarga imágenes DX \n \n 7️⃣ Farmacia \n \n 8️⃣ Citas Odontológicas \n \n 9️⃣ Cancelar Citas'
+            body: '¡Bienvenido/a a la Clínica Medsalud!\n \n*Por favor, indica el número de la opción que deseas consultar:* 📋 \n \nEn el momento que desees escribe *REGRESAR* para volver a este menú  \n \n 1️⃣Agendar citas médicas y RX\n \n 2️⃣ Juan Cirugías \n \n 3️⃣ Agendar citas laboratorio \n \n 4️⃣ Servicios Particulares \n \n 5️⃣ Descarga de Laboratorios \n \n 6️⃣ Descarga imágenes DX \n \n 7️⃣ Farmacia \n \n 8️⃣ Citas Odontológicas \n \n 9️⃣ Cancelar Citas'
           }
         };
 
