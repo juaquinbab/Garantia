@@ -111,86 +111,88 @@
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Gestión de Archivos</h1>
+    
+<div class="container">
+    <h1>Gestión de Archivos</h1>
 
-        <h2>Subir archivo</h2>
-        <form id="uploadForm">
-            <input type="file" name="files" multiple />
-            <select name="sala">
-                <option value="sala1">Sala 1</option>
-                <option value="sala2">Sala 2</option>
-            </select>
-            <button type="submit">Subir Archivos</button>
-        </form>
-        
-        <h2>Archivos en sala</h2>
-        <div class="actions">
-            <button onclick="loadFiles('sala1')">Ver archivos de Sala 1</button>
-            <button onclick="loadFiles('sala2')">Ver archivos de Sala 2</button>
-        </div>
-        <div id="files" class="file-list"></div>
-
-        <h2>Descargar y eliminar</h2>
-        <div class="actions">
-            <button onclick="downloadFiles('sala1')">Descargar Sala 1</button>
-            <button onclick="downloadFiles('sala2')">Descargar Sala 2</button>
-            <button onclick="deleteAllFiles('sala1')">Borrar Todo en Sala 1</button>
-            <button onclick="deleteAllFiles('sala2')">Borrar Todo en Sala 2</button>
-        </div>
+    <h2>Subir archivo</h2>
+    <form id="uploadForm">
+        <input type="file" name="files" multiple />
+        <select name="sala">
+            <option value="sala1">Sala 1</option>
+            <option value="sala2">Sala 2</option>
+            <option value="sala3">Sala 3</option>
+        </select>
+        <button type="submit">Subir Archivos</button>
+    </form>
+    
+    <h2>Archivos en sala</h2>
+    <div class="actions">
+        <button onclick="loadFiles('sala1')">Ver archivos de Sala 1</button>
+        <button onclick="loadFiles('sala2')">Ver archivos de Sala 2</button>
+        <button onclick="loadFiles('sala3')">Ver archivos de Sala 3</button>
     </div>
+    <div id="files" class="file-list"></div>
 
-    <script>
-        // Funciones del cliente
-        const loadFiles = async (sala) => {
-            const response = await fetch(`/files/${sala}`);
-            const data = await response.json();
-            const filesDiv = document.getElementById('files');
-            filesDiv.innerHTML = `<h3>Archivos en ${sala}:</h3>`;
-            data.files.forEach(file => {
-                filesDiv.innerHTML += `
-                    <div class="file-item">
-                        ${file}
-                        <button onclick="deleteFile('${sala}', '${file}')">Eliminar</button>
-                    </div>`;
-            });
-        };
+    <h2>Descargar y eliminar</h2>
+    <div class="actions">
+        <button onclick="downloadFiles('sala1')">Descargar Sala 1</button>
+        <button onclick="downloadFiles('sala2')">Descargar Sala 2</button>
+        <button onclick="downloadFiles('sala3')">Descargar Sala 3</button>
+        <button onclick="deleteAllFiles('sala1')">Borrar Todo en Sala 1</button>
+        <button onclick="deleteAllFiles('sala2')">Borrar Todo en Sala 2</button>
+        <button onclick="deleteAllFiles('sala3')">Borrar Todo en Sala 3</button>
+    </div>
+</div>
 
+<script>
+    const loadFiles = async (sala) => {
+        const response = await fetch(`/files/${sala}`);
+        const data = await response.json();
+        const filesDiv = document.getElementById('files');
+        filesDiv.innerHTML = `<h3>Archivos en ${sala}:</h3>`;
+        data.files.forEach(file => {
+            filesDiv.innerHTML += `
+                <div class="file-item">
+                    ${file}
+                    <button onclick="deleteFile('${sala}', '${file}')">Eliminar</button>
+                </div>`;
+        });
+    };
 
+    const deleteFile = async (sala, filename) => {
+        const response = await fetch(`/files/${sala}/${filename}`, { method: 'DELETE' });
+        const data = await response.json();
+        alert(data.message);
+        loadFiles(sala);
+    };
 
-        const deleteFile = async (sala, filename) => {
-            const response = await fetch(`/files/${sala}/${filename}`, { method: 'DELETE' });
-            const data = await response.json();
-            alert(data.message);
-            loadFiles(sala);
-        };
+    const downloadFiles = (sala) => {
+        window.location.href = `/download/${sala}`;
+    };
 
-        const downloadFiles = (sala) => {
-            window.location.href = `/download/${sala}`;
-        };
-
-        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const response = await fetch('/upload', {
-        method: 'POST',
-        body: formData,
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData,
+        });
+        const data = await response.json();
+        alert(data.message);
     });
-    const data = await response.json();
-    alert(data.message);
-});
 
+    const deleteAllFiles = async (sala) => {
+        const confirmDelete = confirm(`¿Estás seguro de que deseas eliminar todos los archivos de ${sala}?`);
+        if (!confirmDelete) return;
 
-        const deleteAllFiles = async (sala) => {
-            const confirmDelete = confirm(`¿Estás seguro de que deseas eliminar todos los archivos de ${sala}?`);
-            if (!confirmDelete) return;
-
-            const response = await fetch(`/delete-all/${sala}`, { method: 'DELETE' });
-            const data = await response.json();
-            alert(data.message);
-            loadFiles(sala);
-        };
-    </script>
+        const response = await fetch(`/delete-all/${sala}`, { method: 'DELETE' });
+        const data = await response.json();
+        alert(data.message);
+        loadFiles(sala);
+    };
+</script>
 </body>
 </html>
