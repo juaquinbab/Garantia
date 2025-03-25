@@ -8085,17 +8085,13 @@ if (EtapasMSG.length > 0) {
 /////// ADMIN /////
 
 
-
-
 const sala1Dir = path.join(__dirname, 'sala1');
 const sala2Dir = path.join(__dirname, 'sala2');
-const sala3Dir = path.join(__dirname, 'sala3');
 
 // Configuración de multer para la carga de archivos
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const folder = req.body.sala === 'sala1' ? sala1Dir :
-                       req.body.sala === 'sala2' ? sala2Dir : sala3Dir;
+        const folder = req.body.sala === 'sala1' ? sala1Dir : sala2Dir;
         cb(null, folder);
     },
     filename: (req, file, cb) => {
@@ -8104,65 +8100,101 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+// Middleware para servir archivos estáticos
 app.use(express.static('public'));
 app.use(express.json());
 
+// Cargar archivo
 app.post('/upload', upload.array('files', 50), (req, res) => {
-    res.send({ message: 'Archivos subidos exitosamente' });
+  const { sala } = req.body; // Obtener la sala seleccionada
+  const targetFolder = sala === 'sala1' ? sala1Dir : sala2Dir; // Decidir la carpeta
+
+  if (!targetFolder) {
+    return res.status(400).send({ error: 'Sala no válida' });
+  }
+
+  // Mover los archivos subidos a la carpeta correcta
+  req.files.forEach(file => {
+    const targetPath = path.join(targetFolder, file.originalname);
+    fs.renameSync(file.path, targetPath); // Mueve el archivo a la carpeta de destino
+  });
+
+  res.send({ message: 'Archivos subidos exitosamente' });
 });
 
-app.get('/files/:sala', (req, res) => {
-    const folder = req.params.sala === 'sala1' ? sala1Dir :
-                   req.params.sala === 'sala2' ? sala2Dir : sala3Dir;
 
+// Listar archivos
+app.get('/files/:sala', (req, res) => {
+    const folder = req.params.sala === 'sala1' ? sala1Dir : sala2Dir;
     fs.readdir(folder, (err, files) => {
-        if (err) return res.status(500).send({ error: 'Error al leer la carpeta' });
+        if (err) {
+            return res.status(500).send({ error: 'Error al leer la carpeta' });
+        }
         res.send({ files });
     });
 });
 
+// Eliminar archivo
 app.delete('/files/:sala/:filename', (req, res) => {
-    const folder = req.params.sala === 'sala1' ? sala1Dir :
-                   req.params.sala === 'sala2' ? sala2Dir : sala3Dir;
-
+    const folder = req.params.sala === 'sala1' ? sala1Dir : sala2Dir;
     const filePath = path.join(folder, req.params.filename);
     fs.unlink(filePath, (err) => {
-        if (err) return res.status(500).send({ error: 'Error al eliminar el archivo' });
+        if (err) {
+            return res.status(500).send({ error: 'Error al eliminar el archivo' });
+        }
         res.send({ message: 'Archivo eliminado' });
     });
 });
 
+// Descargar todos los archivos
 app.get('/download/:sala', (req, res) => {
-    const folder = req.params.sala === 'sala1' ? sala1Dir :
-                   req.params.sala === 'sala2' ? sala2Dir : sala3Dir;
-    
+    const folder = req.params.sala === 'sala1' ? sala1Dir : sala2Dir;
     const zipPath = path.join(__dirname, `${req.params.sala}.zip`);
-  
+    const archiver = require('archiver');
 
     const output = fs.createWriteStream(zipPath);
     const archive = archiver('zip', { zlib: { level: 9 } });
 
     output.on('close', () => {
-        res.download(zipPath, () => fs.unlinkSync(zipPath));
+        res.download(zipPath, () => {
+            fs.unlinkSync(zipPath); // Eliminar el archivo ZIP después de descargarlo
+        });
     });
 
-    archive.on('error', (err) => res.status(500).send({ error: 'Error al comprimir archivos' }));
+    archive.on('error', (err) => res.status(500).send({ error: 'Error al comprimir los archivos' }));
     archive.pipe(output);
     archive.directory(folder, false);
     archive.finalize();
 });
 
+
+// Eliminar todos los archivos de una sala
 app.delete('/delete-all/:sala', (req, res) => {
-    const folder = req.params.sala === 'sala1' ? sala1Dir :
-                   req.params.sala === 'sala2' ? sala2Dir : sala3Dir;
+  const folder = req.params.sala === 'sala1' ? sala1Dir : sala2Dir;
 
-    fs.readdir(folder, (err, files) => {
-        if (err) return res.status(500).send({ error: 'Error al leer la carpeta' });
+  fs.readdir(folder, (err, files) => {
+      if (err) {
+          return res.status(500).send({ error: 'Error al leer la carpeta' });
+      }
 
-        files.forEach((file) => fs.unlinkSync(path.join(folder, file)));
+      let errorOccurred = false;
 
-        res.send({ message: `Todos los archivos en ${req.params.sala} fueron eliminados.` });
-    });
+      files.forEach((file) => {
+          const filePath = path.join(folder, file);
+          fs.unlink(filePath, (err) => {
+              if (err) {
+                  errorOccurred = true;
+                  console.error(`Error al eliminar el archivo ${file}:`, err);
+              }
+          });
+      });
+
+      if (errorOccurred) {
+          return res.status(500).send({ message: 'Ocurrió un error al eliminar algunos archivos.' });
+      }
+
+      res.send({ message: `Todos los archivos en ${req.params.sala} fueron eliminados.` });
+  });
 });
 
 
