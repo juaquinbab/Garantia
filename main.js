@@ -3801,7 +3801,7 @@ app.post("/webhook", function (request, response) {
               type: 'image',
               image: {
                   link: "http://imgfz.com/i/savhZyl.jpeg",
-                  caption: "*¡BIENVENIDO A GARANTÍA MANIZALES!*\n\nOfrecemos soluciones rápidas y confiables para obtener el dinero que necesitas. \n\n1️⃣ *Empeño sobre motos* 🚗🏍️ \n2️⃣ *Préstamos sobre artículos comerciales*📱💻🎧 \n\nSi tienes un celular, computador, dispositivos Apple, televisores Smart o un equipo de sonido, puedes obtener dinero de forma rápida.\n\n*¡Dinero en solo 30 minutos!*\n\nSin costos anticipados por trámites, papelería o fiadores. \n\n📩 *Envíanos fotos y referencia de tu artículo o vehículo para cotizar tu préstamo.*\n\n\n📢 Este chat es únicamente informativo y no es atendido. Para comunicarte con nosotros, usa nuestras líneas activas:  \n\n🔹 Atención al Cliente: 💬 Escríbenos aquí https://wa.me/3171018676\n\n🔹 Cotizaciones: 📩 Solicita tu cotización aquí https://wa.me/573234578933\n\n📲 También estamos en Instagram y Facebook. \n\nTe respondemos en menos de 30 minutos."
+                  caption: "📢 Este chat es únicamente informativo y no es atendido. Para comunicarte con nosotros, usa nuestras líneas activas:  \n\n🔹 Atención al Cliente: 💬 Escríbenos aquí https://wa.me/3171018676\n\n🔹 Cotizaciones: 📩 Solicita tu cotización aquí https://wa.me/573234578933\n\n📲 También estamos en Instagram y Facebook. \n\nTe respondemos en menos de 30 minutos."
               }
           };
 
